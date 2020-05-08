@@ -1,7 +1,7 @@
 // get a reference to the textbox where the bill type is to be entered
 var type = document.querySelector('.billTypeText');
 //get a reference to the add button
-var button = document.querySelector('.addTotalBill');
+var button = document.querySelector('.addToBillBtn');
 //create a variable that will keep track of the total bill
 var callT = document.querySelector('.callTotalOne');
 var smsT = document.querySelector('.smsTotalOne');
@@ -12,11 +12,11 @@ var smsTotal = 0;
 //add an event listener for when the add button is pressed
 function totalPhoneBill(billString){
 
-    var billItems = billString.split(',')
+    var billItems = billString.split(',');
     var billTotal = 0;
 
     for(var i=0;i<billItems.length;i++){
-        var billItem = billItems[i].tirm();
+        var billItem = billItems[i].trim();
         if(billItem === 'call'){
             billTotal += 2.75;
             callsTotal += 2.75;
@@ -29,10 +29,12 @@ function totalPhoneBill(billString){
     var roundedBillTotal = billTotal.toFixed(2);
     callT.innerHTML = (callsTotal).toFixed(2);
     smsT.innerHTML = (smsTotal).toFixed(2);
+
+    return roundedBillTotal;
 }
 
 function styleTotalColor(roundedBillTotal){
-    var currentTotal = Number(roundedBillTotal);
+    const currentTotal = Number(roundedBillTotal);
 
     total.classList.remove('danger')
     total.classList.remove('warning')
@@ -46,13 +48,13 @@ function styleTotalColor(roundedBillTotal){
 }
 
 function calculateBtnClicked(){
-    var billString = type.nodeValue;
+    var billString = type.value;
     const  roundedBillTotal = totalPhoneBill(billString);
 
     total.innerHTML = roundedBillTotal;
     styleTotalColor(roundedBillTotal);
 }
-button.addEventListener('click', calculateBtnClicked);
+button.addEventListener('click', calculateBtnClicked)
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
