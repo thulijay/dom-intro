@@ -32,7 +32,7 @@ function totalPhoneBill(billString){
 }
 
 function styleTotalColor(roundedBillTotal){
-    const currentTotal = Number(roundedBillTotal);
+    var currentTotal = Number(roundedBillTotal);
 
     total.classList.remove('danger')
     total.classList.remove('warning')
