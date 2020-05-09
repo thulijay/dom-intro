@@ -40,7 +40,6 @@ function styleTotal(roundedBillTotal){
         //make orange
         colorChange.classList.add("warning");
     }
-
 }
 function calculateBtnClicked(){
     var billString=billStr.value;
