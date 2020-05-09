@@ -30,13 +30,12 @@ var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked
     }
 
   var roundedBillTotal = billTotal.toFixed(2);
-<<<<<<< HEAD
+
   radioCalls.innerHTML = (callsTotal).toFixed(2);
   radioSms.innerHTML = (smsTotal).toFixed(2);
-=======
+
   callT.innerHTML = (callsTotal).toFixed(2);
   smsT.innerHTML = (smsTotal).toFixed(2);
->>>>>>> cc904a4cec7d4de3fb0a2678e3cae6b7aed5c1a4
 
   return roundedBillTotal;
 }
@@ -44,7 +43,6 @@ var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked
 function styleTotalColor(roundedBillTotal){
   const currentTotal = Number(roundedBillTotal);
 
-<<<<<<< HEAD
   radioTotal.classList.remove('danger')
   radioTotal.classList.remove('warning')
 
@@ -55,22 +53,3 @@ function styleTotalColor(roundedBillTotal){
     radioTotal.classList.add('warning')
   }
 }
-=======
-  total.classList.remove('danger')
-  total.classList.remove('warning')
-
-  if (currentTotal >= 50) {
-    total.classList.add('danger')
-  }
-  else if (currentTotal >= 30 && currentTotal < 50){
-    total.classList.add('warning')
-  }
-}
-function calculateBtnClicked(){
-  var billString = type.value;
-  const roundedBillTotal = totalPhoneBill(billString);
-
-  total.innerHTML = roundedBillTotal;
-  styleTotalColor(roundedBillTotal);
-}
->>>>>>> cc904a4cec7d4de3fb0a2678e3cae6b7aed5c1a4
