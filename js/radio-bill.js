@@ -9,10 +9,7 @@ var radioTotal = document.querySelector('totalTwo')
 
 var smsTotal = 0;
 var callsTotal = 0;
-<<<<<<< HEAD
 var billTotal = 0;
-=======
->>>>>>> cc904a4cec7d4de3fb0a2678e3cae6b7aed5c1a4
 //add an event listener for when the add button is pressed
 radioBtn.addEventListener('click', calculateBtnClicked)
 //in the event listener get the value from the billItemTypeRadio radio buttons
