@@ -9,23 +9,21 @@ var total = document.querySelector('.totalOne');
 
 var callsTotal1 = 0;
 var smsTotal1 = 0;
+var billTotal1 = 0;
 
 //add an event listener for when the add button is pressed
-button.addEventListener('click', calculateBtn);
 //link the function to a click event on the calculate button
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
-function textBill(textBillTotal) {
+function textBill() {
     //split the string
-    var textBillItems = textBillTotal.split(",");
     // a variable for the total phone bill.
-    var billTotal1 = 0;
+    var textBillTotal = type.value;
     //loop over all the bill items
-    for (var i=0;i<textBillItems.length;i++){
-        var textbillItem = textBillItems[i].trim();
+        var textbillItem = textBillTotal.trim();
         if (textbillItem === "call"){
             billTotal1 += 2.75;
             callsTotal1 += 2.75;
@@ -34,35 +32,27 @@ function textBill(textBillTotal) {
             billTotal1 += 0.75;
             smsTotal1 += 0.75;
         }
-    }
 
-      //round to two decimals
-    var roundedBill = (billTotal1).toFixed(2);
+      //round to two decimal places
     callT.innerHTML = (callsTotal1).toFixed(2);
     smsT.innerHTML = (smsTotal1).toFixed(2);
 
-    return roundedBill;
+    total.innerHTML = billTotal1.toFixed(2);
+    styleTotal();
 }
 
-function styleTotal(roundedBill){
-    const currentTotal1 = Number(roundedBill);
+function styleTotal(){
 
-    total.classList.remove('danger')
-    total.classList.remove('warning')
+    //total.classList.remove('danger')
+    //total.classList.remove('warning')
 
-    if (currentTotal1 >= 50) {
+    if (billTotal1 >= 50) {
         // make the total red
         total.classList.add('danger')
-    } else if (currentTotal1 >= 30 && currentTotal1 < 50) {
+    } else if (billTotal1 >= 30 && billTotal1 < 50) {
         // make the total orange
         total.classList.add('warning')
     }
 }
 
-function calculateBtn(){
-    var textBillTotal = type.value;
-    const roundedBill = textBill(textBillTotal);
-
-    total.innerHTML = roundedBill;
-    styleTotal(roundedBill);
-}
+button.addEventListener('click', textBill);
