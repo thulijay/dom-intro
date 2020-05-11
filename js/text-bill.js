@@ -37,7 +37,7 @@ function textBill(textBillTotal) {
     }
 
       //round to two decimals
-    var roundedBill = billTotal1.toFixed(2);
+    var roundedBill = (billTotal1).toFixed(2);
     callT.innerHTML = (callsTotal1).toFixed(2);
     smsT.innerHTML = (smsTotal1).toFixed(2);
 
