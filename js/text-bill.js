@@ -7,66 +7,62 @@ var callT = document.querySelector('.callTotalOne');
 var smsT = document.querySelector('.smsTotalOne');
 var total = document.querySelector('.totalOne');
 
-var callsTotal = 0;
-var smsTotal = 0;
+var callsTotal1 = 0;
+var smsTotal1 = 0;
 
 //add an event listener for when the add button is pressed
-button.addEventListener('click', calculateBtnClicked);
+button.addEventListener('click', calculateBtn);
 //link the function to a click event on the calculate button
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
-function totalPhoneBill(billString) {
+function textBill(textBillTotal) {
     //split the string
-    var billItems = billString.split(",");
+    var textBillItems = textBillTotal.split(",");
     // a variable for the total phone bill.
-    var billTotal = 0;
+    var billTotal1 = 0;
     //loop over all the bill items
-    for (var i=0;i<billItems.length;i++){
-        var billItem = billItems[i].trim();
-        if (billItem === "call"){
-            billTotal += 2.75;
-            callsTotal += 2.75;
+    for (var i=0;i<textBillItems.length;i++){
+        var textbillItem = textBillItems[i].trim();
+        if (textbillItem === "call"){
+            billTotal1 += 2.75;
+            callsTotal1 += 2.75;
         }
-        else if (billItem === "sms"){
-            billTotal += 0.75;
-            smsTotal += 0.75
+        else if (textbillItem === "sms"){
+            billTotal1 += 0.75;
+            smsTotal1 += 0.75;
         }
     }
 
       //round to two decimals
-    var roundedBillTotal = billTotal.toFixed(2);
-    callT.innerHTML = (callsTotal).toFixed(2);
-    smsT.innerHTML = (smsTotal).toFixed(2);
+    var roundedBill = billTotal1.toFixed(2);
+    callT.innerHTML = (callsTotal1).toFixed(2);
+    smsT.innerHTML = (smsTotal1).toFixed(2);
 
-
-    return roundedBillTotal;
-
+    return roundedBill;
 }
 
-
-function styleTotalColor(roundedBillTotal){
-    const currentTotal = Number(roundedBillTotal);
+function styleTotal(roundedBill){
+    const currentTotal1 = Number(roundedBill);
 
     total.classList.remove('danger')
     total.classList.remove('warning')
 
-    if (currentTotal >= 50) {
+    if (currentTotal1 >= 50) {
         // make the total red
         total.classList.add('danger')
-    } else if (currentTotal >= 30 && currentTotal < 50) {
+    } else if (currentTotal1 >= 30 && currentTotal1 < 50) {
         // make the total orange
         total.classList.add('warning')
     }
-
 }
 
-function calculateBtnClicked(){
-    var billString = type.value;
-    const roundedBillTotal = totalPhoneBill(billString);
+function calculateBtn(){
+    var textBillTotal = type.value;
+    const roundedBill = textBill(textBillTotal);
 
-    total.innerHTML = roundedBillTotal;
-    styleTotalColor(roundedBillTotal);
+    total.innerHTML = roundedBill;
+    styleTotal(roundedBill);
 }

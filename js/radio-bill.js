@@ -6,8 +6,8 @@ var radioCalls = document.querySelector('.callTotalTwo')
 var radioSms = document.querySelector('.smsTotalTwo')
 var radioTotal = document.querySelector('.totalTwo')
 
-var smsTotal = 0;
-var callsTotal = 0;
+var smsTotal2 = 0;
+var callsTotal2 = 0;
 
 //add an event listener for when the add button is pressed
 radioButton.addEventListener('click', radioBill)
@@ -20,26 +20,27 @@ var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked
 var billItemType = checkedRadioBtn.value;
 
     if (billItemType === "call"){
-      callsTotal += 2.75;
+      callsTotal2 += 2.75;
     }
 
     else if (billItemType === "sms"){
-      smsTotal += 0.75;
+      smsTotal2 += 0.75;
     }
 
-    radioCalls.innerHTML = (callsTotal).toFixed(2);
-    radioSms.innerHTML = (smsTotal).toFixed(2);
-    var currentTotal = callsTotal + smsTotal;
-  }
+    radioCalls.innerHTML = (callsTotal2).toFixed(2);
+    radioSms.innerHTML = (smsTotal2).toFixed(2);
+    var radioT = callsTotal2 + smsTotal2;
+    radioTotal.innerHTML = radioT.toFixed(2);
 
-    function styleTotalColor(){
+    function styleColors(){
   radioTotal.classList.remove('danger')
   radioTotal.classList.remove('warning')
 
-  if (currentTotal >= 50){
+  if (radioT >= 50){
     radioTotal.classList.add('danger')
   }
-  else if (currentTotal >= 30 && currentTotal < 50){
+  else if (radioT >= 30 && radioT < 50){
     radioTotal.classList.add('warning')
   }
+}
 }
