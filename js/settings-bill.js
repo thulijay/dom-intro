@@ -58,7 +58,7 @@ else if(billTotal3 >= criticalLevel){
   totalType.classList.add('danger');
 }
 }
-btnSettings.addEventListener('click', radioSettings);
+btnType.addEventListener('click', radioSettings);
 btnSettings.addEventListener('click', costSettings);
 
 
