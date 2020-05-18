@@ -1,3 +1,73 @@
+//Bill Type
+var callType = document.querySelector('.callTotalSettings');
+var smsType = document.querySelector('.smsTotalSettings');
+var totalType = document.querySelector('.totalSettings');
+var btnType = document.querySelector('.checkedButton');
+
+var callTotal3 = 0;
+var smsTotal3 = 0;
+var billTotal3 = 0;
+
+//settings
+ var callSettings = document.querySelector('.callTotalSettings');
+ var smsSettings = document.querySelector('.smsTotalSettings');
+ var warningSettings = document.querySelector('.warningLevelSetting');
+ var criticalSettings = document.querySelector('.criticalLevelSetting')
+ var btnSettings = document.querySelector('.updateSettings');
+
+ var callCost1 = 0;
+ var smsCost1 = 0;
+ var warningLevel= 0;
+ var criticalLevel = 0;
+
+ function costSettings(){
+   callCost1 = Number(callSettings.value);
+   smsCost1 = Number(smsSettings.value);
+   warningLevel = Number(warningSettings.value);
+   criticalLevel = Number(criticalSettings.value);
+ }
+
+ function radioSettings(){
+   var settingsRadio = document.querySelector('input[name="billTypeWithSettings"]:checked');
+   var billTypeWithSettings = settingsRadio.value;
+
+if(settingsRadio){
+   if(billTotal3 < criticalLevel){
+     if(billTypeWithSettings === 'call'){
+       billTotal3 += callCost1;
+       callTotal3 += callCost1;
+ }
+ else if (billTypeWithSettings === 'sms'){
+   billTotal3 += smsCost1;
+   smsTotal3 += smsCost1;
+ }
+}
+}
+callType.innerHTML = (callTotal3).toFixed(2);
+smsType.innerHTML = (smsTotal3).toFixed(2);
+totalType.innerHTML = billTotal3.toFixed(2);
+
+colorType();
+}
+
+function colorType(){
+  if(billTotal3 >= warningLevel && billTotal3 < criticalLevel){
+  totalType.classList.add('warning');
+}
+else if(billTotal3 >= criticalLevel){
+  totalType.classList.add('danger');
+}
+}
+btnSettings.addEventListener('click', radioSettings);
+btnSettings.addEventListener('click', costSettings);
+
+
+
+
+
+
+
+
 // get a reference to the sms or call radio buttons
 
 // get refences to all the settings fields
