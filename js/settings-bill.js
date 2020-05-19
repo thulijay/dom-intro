@@ -2,7 +2,7 @@
 var callType = document.querySelector('.callTotalSettings');
 var smsType = document.querySelector('.smsTotalSettings');
 var totalType = document.querySelector('.totalSettings');
-var btnType = document.querySelector('.checkedButton');
+var btnType = document.querySelector('.checkButton');
 
 var callTotal3 = 0;
 var smsTotal3 = 0;
@@ -25,10 +25,11 @@ var billTotal3 = 0;
    smsCost1 = Number(smsSettings.value);
    warningLevel = Number(warningSettings.value);
    criticalLevel = Number(criticalSettings.value);
+   colorType(billTotal3);
  }
 
  function radioSettings(){
-   var settingsRadio = document.querySelector('input[name="billTypeWithSettings"]:checked');
+   var settingsRadio = document.querySelector("input[name='billTypeWithSettings']:checked");
    var billTypeWithSettings = settingsRadio.value;
 
 if(settingsRadio){
@@ -47,10 +48,10 @@ callType.innerHTML = (callTotal3).toFixed(2);
 smsType.innerHTML = (smsTotal3).toFixed(2);
 totalType.innerHTML = billTotal3.toFixed(2);
 
-colorType();
+colorType(billTotal3);
 }
 
-function colorType(){
+function colorType(billTotal3){
   if(billTotal3 >= warningLevel && billTotal3 < criticalLevel){
   totalType.classList.add('warning');
 }
