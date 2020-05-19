@@ -12,7 +12,7 @@ var billTotal3 = 0;
  var callSettings = document.querySelector('.callTotalSettings');
  var smsSettings = document.querySelector('.smsTotalSettings');
  var warningSettings = document.querySelector('.warningLevelSetting');
- var criticalSettings = document.querySelector('.criticalLevelSetting')
+ var criticalSettings = document.querySelector('.criticalLevelSetting');
  var btnSettings = document.querySelector('.updateSettings');
 
  var callCost1 = 0;
@@ -29,8 +29,8 @@ var billTotal3 = 0;
  }
 
  function radioSettings(){
-   var settingsRadio = document.querySelector("input[name='billTypeWithSettings']:checked");
-   var billTypeWithSettings = settingsRadio.value;
+   var peace = document.querySelector("input[name='billTypeWithSettings']:checked");
+   var billTypeWithSettings = peace.value;
 
 if(settingsRadio){
    if(billTotal3 < criticalLevel){
