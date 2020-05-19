@@ -29,8 +29,8 @@ var billTotal3 = 0;
  }
 
  function radioSettings(){
-   var peace = document.querySelector("input[name='billTypeWithSettings']:checked");
-   var billTypeWithSettings = peace.value;
+   var settingsRadio = document.querySelector("input[name='billTypeWithSettings']:checked");
+   var billTypeWithSettings = settingsRadio.value;
 
 if(settingsRadio){
    if(billTotal3 < criticalLevel){
