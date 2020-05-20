@@ -25,19 +25,21 @@ var billTotal3 = 0;
    smsCost1 = Number(smsSettings.value);
    warningLevel = Number(warningSettings.value);
    criticalLevel = Number(criticalSettings.value);
-   colorType(billTotal3);
+   colorType();
+
  }
 
  function radioSettings(){
-   var bill = totalType.value;
+   var small = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
-if(totalType){
+if(small){
+  var billItemTypeWithSettings = small.value;
    if(billTotal3 < criticalLevel){
-     if(bill === 'call'){
+     if(billItemTypeWithSettings === 'call'){
        billTotal3 += callCost1;
        callTotal3 += callCost1;
  }
- else if (bill === 'sms'){
+ else if (billItemTypeWithSettings === 'sms'){
    billTotal3 += smsCost1;
    smsTotal3 += smsCost1;
  }
@@ -47,7 +49,7 @@ callType.innerHTML = (callTotal3).toFixed(2);
 smsType.innerHTML = (smsTotal3).toFixed(2);
 totalType.innerHTML = billTotal3.toFixed(2);
 
-colorType(billTotal3);
+colorType();
 }
 
 function colorType(billTotal3){
