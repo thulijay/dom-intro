@@ -53,10 +53,15 @@ colorType();
 }
 
 function colorType(){
+  totalType.classList.remove('warning');
+  totalType.classList.remove('danger');
+
   if(billTotal3 >= warningLevel && billTotal3 < criticalLevel){
-  totalType.classList.add('warning');
+    totalType.classList.remove('danger');
+    totalType.classList.add('warning');
 }
 else if(billTotal3 >= criticalLevel){
+  totalType.classList.remove('warning');
   totalType.classList.add('danger');
 }
 }
