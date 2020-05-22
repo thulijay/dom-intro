@@ -30,10 +30,10 @@ var billTotal3 = 0;
  }
 
  function radioSettings(){
-   var small = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+   var settingsRadio = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
-if(small){
-  var billItemTypeWithSettings = small.value;
+if(settingsRadio){
+  var billItemTypeWithSettings = settingsRadio.value;
    if(billTotal3 < criticalLevel){
      if(billItemTypeWithSettings === 'call'){
        billTotal3 += callCost1;
@@ -45,14 +45,14 @@ if(small){
  }
 }
 }
-callType.innerHTML = (callTotal3).toFixed(2);
-smsType.innerHTML = (smsTotal3).toFixed(2);
+callType.innerHTML = callTotal3.toFixed(2);
+smsType.innerHTML = smsTotal3.toFixed(2);
 totalType.innerHTML = billTotal3.toFixed(2);
 
 colorType();
 }
 
-function colorType(billTotal3){
+function colorType(){
   if(billTotal3 >= warningLevel && billTotal3 < criticalLevel){
   totalType.classList.add('warning');
 }
@@ -62,6 +62,7 @@ else if(billTotal3 >= criticalLevel){
 }
 btnType.addEventListener('click', radioSettings);
 btnSettings.addEventListener('click', costSettings);
+
 
 
 // get a reference to the sms or call radio buttons
