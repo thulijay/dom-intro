@@ -14,34 +14,42 @@ var billTotal2 = 0;
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
+var radioX = RadioBill();
+
 function radioBill(){
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
 var billItemType = checkedRadioBtn.value;
 
     if (billItemType === "call"){
-      billTotal2 += 2.75;
-      callsTotal2 += 2.75;
+      radioX.executeCall2();
+      //billTotal2 += 2.75;
+      //callsTotal2 += 2.75;
     }
 
     else if (billItemType === "sms"){
-      billTotal2 += 0.75;
-      smsTotal2 += 0.75;
+      //billTotal2 += 0.75;
+      //smsTotal2 += 0.75;
+      radioX.executeSms2();
     }
 
-    radioCalls.innerHTML = (callsTotal2).toFixed(2);
-    radioSms.innerHTML = (smsTotal2).toFixed(2);
-    radioTotal.innerHTML = billTotal2.toFixed(2);
+    radioCalls.innerHTML = (radioX.totalForCalls2()).toFixed(2);
+    radioSms.innerHTML = (radioX.totalForSms2()).toFixed(2);
+    //radioTotal.innerHTML = billTotal2.toFixed(2);
+    radioTotal.innerHTML = radioX.executedTotal2().toFixed(2);
+
     styleColors();
   }
 
     function styleColors(){
+
+
   //radioTotal.classList.remove('danger')
   //radioTotal.classList.remove('warning')
 
-  if (billTotal2 >= 50){
+  if (radioX.executedTotal2() >= 50){
     radioTotal.classList.add('danger')
   }
-  else if (billTotal2 >= 30 && billTotal2 < 50){
+  else if (radioX.executedTotal2() >= 30 && radioX.executedTotal2() < 50){
     radioTotal.classList.add('warning')
   }
 }

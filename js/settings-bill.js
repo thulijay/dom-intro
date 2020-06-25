@@ -20,11 +20,13 @@ var billTotal3 = 0;
  var warningLevel= 0;
  var criticalLevel = 0;
 
+ var settingsX = BillWithSettings();
+
  function costSettings(){
-   callCost1 = Number(callSettings.value);
-   smsCost1 = Number(smsSettings.value);
-   warningLevel = Number(warningSettings.value);
-   criticalLevel = Number(criticalSettings.value);
+   callCost1 = Number(settingsX.setCallCost(callSettings.value));
+   smsCost1 = Number(settingsX.setSmsCost(smsSettings.value));
+   warningLevel = Number(settingsX.setWarningLevel(warningSettings.value));
+   criticalLevel = Number(settingsX.setCriticalLevel(criticalSettings.value));
    colorType();
 
  }
@@ -36,31 +38,34 @@ if(settingsRadio){
   var billItemTypeWithSettings = settingsRadio.value;
    if(billTotal3 < criticalLevel){
      if(billItemTypeWithSettings === 'call'){
-       billTotal3 += callCost1;
-       callTotal3 += callCost1;
+       settingsX.makeCall();
+      // billTotal3 += callCost1;
+       //callTotal3 += callCost1;
  }
  else if (billItemTypeWithSettings === 'sms'){
-   billTotal3 += smsCost1;
-   smsTotal3 += smsCost1;
+   settingsX.sendSms();
+   //billTotal3 += smsCost1;
+   //smsTotal3 += smsCost1;
  }
 }
 }
-callType.innerHTML = callTotal3.toFixed(2);
-smsType.innerHTML = smsTotal3.toFixed(2);
-totalType.innerHTML = billTotal3.toFixed(2);
+callType.innerHTML = (settingsX.getTotalCallCost()).toFixed(2);
+smsType.innerHTML = (settingsX.getTotalSmsCost()).toFixed(2);
+totalType.innerHTML =  (settingsX.getTotalCost()).toFixed(2);
 
+alert(settingsX.getTotalCost())
 colorType();
 }
 
 function colorType(){
-  totalType.classList.remove('warning');
-  totalType.classList.remove('danger');
+  //totalType.classList.remove('warning');
+  //totalType.classList.remove('danger');
 
-  if(billTotal3 >= warningLevel && billTotal3 < criticalLevel){
+  if( settingsX.totalClassName() >= warningLevel &&  settingsX.totalClassName() < criticalLevel){
     totalType.classList.remove('danger');
     totalType.classList.add('warning');
 }
-else if(billTotal3 >= criticalLevel){
+else if( settingsX.totalClassName() >= criticalLevel){
   totalType.classList.remove('warning');
   totalType.classList.add('danger');
 }
