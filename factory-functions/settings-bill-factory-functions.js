@@ -7,29 +7,36 @@ function BillWithSettings() {
 	 var callCostTotal = 0;
 	 var smsCostTotal = 0;
 
-
+	 function settingsBill(billType){
+	 	if(billType === "call"){
+	 		settingsX.makeCall();
+	 	}
+	 	else if(billType === "sms"){
+	 		settingsX.sendSms();
+	 	}
+	 }
 	function setCallCost(callCost) {
-		theCallCost = callCost;
+		theCallCost = Number(callCost);
 	}
 
 	function getCallCost(){
 		return theCallCost;
 	}
 	function setSmsCost(smsCost) {
-		theSmsCost = smsCost;
+		theSmsCost = Number(smsCost);
 	}
 
 	function getSmsCost(){
 		return theSmsCost;
 	}
 	function setWarningLevel(warningLevel){
-		theWarningLevel = warningLevel;
+		theWarningLevel = Number(warningLevel);
 	}
 	function getWarningLevel(){
 		return theWarningLevel;
 	}
 	function setCriticalLevel(criticalLevel){
-		theCriticalLevel = criticalLevel;
+		theCriticalLevel = Number(criticalLevel);
 	}
 	function getCriticalLevel(){
 		return theCriticalLevel;
@@ -40,13 +47,13 @@ function BillWithSettings() {
 		}
 	}
 	function getTotalCost(){
-		return callCostTotal + smsCostTotal;
+		return (callCostTotal + smsCostTotal).toFixed(2);
 	}
 	function getTotalCallCost(){
-		return callCostTotal;
+		return callCostTotal.toFixed(2);
 	}
 	function getTotalSmsCost(){
-		return smsCostTotal;
+		return smsCostTotal.toFixed(2);
 	}
 	function sendSms(){
 		if(!hasReachedCriticalLevel()){
@@ -67,8 +74,18 @@ function BillWithSettings() {
 			return "warning"
 		}
 	}
+	function theColors(){
+		if(settingsX.getTotalCost() >= settingsX.getCriticalLevel()){
+			return "danger";
+		}
+		else if(settingsX.getTotalCost() >= settingsX.getWarningLevel()){
+			return "warning";
+		}
+	}
+
 
 	return {
+		settingsBill,
 		setCallCost,
 		getCallCost,
 		setSmsCost,
@@ -82,6 +99,7 @@ function BillWithSettings() {
 		getTotalCallCost,
 		getTotalSmsCost,
 		sendSms,
-		totalClassName
+		totalClassName,
+		theColors
 	}
 }
