@@ -10,8 +10,6 @@ const billStringElement = document.querySelector(".billString");
 // get a reference for the bill total total
 const billTotalSpanElement = document.querySelector(".total");
 
-var billTotal = 0;
-
 //create the function that will be called when the calculate button is pressed
 //  * this function should read the string value entered - split it on a comma.
 //  * loop over all the entries in the the resulting list
@@ -20,6 +18,8 @@ var billTotal = 0;
 
 function totalPhoneBill(billString){
 var billItems = billString.split(",");
+var billTotal = 0;
+
     for (var i=0;i<billItems.length;i++){
         var billItem = billItems[i].trim();
         if (billItem === "call"){
