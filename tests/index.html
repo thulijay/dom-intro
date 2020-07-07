@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Unit Testing</title>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js" charset="utf-8"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+
+        </head>
+</head>
+<body>
+    <!-- -->
+    <div id="mocha"></div>
+    <script>
+        mocha.setup('bdd');
+        var assert = chai.assert;
+    </script>
+  <script src="../factory-functions/settings-bill-factory-functions.js"></script>
+  <script src="settings-bill-test.js"></script>
+   <script src="../factory-functions/calculate-bill-factory-functions.js" charset="utf-8"></script>
+  <script src="calculate-bill-test.js" charset="utf-8"></script>
+  <script src="../factory-functions/text-input-bill-factory-functions.js" charset="utf-8"></script>
+  <script src="text-input-bill-test.js" charset="utf-8"></script>
+  <script src="../factory-functions/radio-bill-factory-functions.js" charset="utf-8"></script>
+  <script src="radio-bill-test.js" charset="utf-8"></script>
+
+  <script>
+      /*  <!-- configure and run mocha -->*/
+        mocha.checkLeaks();
+        mocha.run();
+    </script>
+
+</body>
+</html>
